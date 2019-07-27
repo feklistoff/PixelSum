@@ -27,15 +27,15 @@ PixelSum::PixelSum(const unsigned char* buffer, int xWidth, int yHeight) : xWidt
     for (int y = 1; y < yHeight; y++)
     {
         unsigned int sum = sourceData[0 + y * xWidth];
-        int sumForBinary = (sourceData[0 + y * xWidth] > 0) ? 1 : 0;
+        int sumForZeroTable = (sourceData[0 + y * xWidth] > 0) ? 1 : 0;
         integralImage[0 + y * xWidth] = integralImage[0 + (y - 1) * xWidth] + sum;
-        zeroTable[0 + y * xWidth] = zeroTable[0 + (y - 1) * xWidth] + sumForBinary;
+        zeroTable[0 + y * xWidth] = zeroTable[0 + (y - 1) * xWidth] + sumForZeroTable;
         for (int x = 1; x < xWidth; x++)
         {
             sum += sourceData[x + y * xWidth];
-            sumForBinary += (sourceData[x + y * xWidth]) ? 1 : 0;
+            sumForZeroTable += (sourceData[x + y * xWidth]) ? 1 : 0;
             integralImage[x + y * xWidth] = integralImage[x + (y - 1) * xWidth] + sum;
-            zeroTable[x + y * xWidth] = zeroTable[x + (y - 1) * xWidth] + sumForBinary;
+            zeroTable[x + y * xWidth] = zeroTable[x + (y - 1) * xWidth] + sumForZeroTable;
         }
     }
      

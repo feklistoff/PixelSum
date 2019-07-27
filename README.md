@@ -62,7 +62,7 @@ We can use relative prefix sum (RPS) technique (some info [here](http://citeseer
 
 **What changes to the code and the API need to be made if buffer dimensions can be >= 4096 x 4096? Also, what would happen if instead of 8 bits per pixel we have 16 bits per pixel?**
 
-Currently our data structure can hold values up to 4096 * 4096 * 255 = 4 278 190 080. If buffer dimensions will be > 4096 x 4096 it is necessary to change the data type of our integral image. Current implementation uses unsigned int. Therefore, we'd have to use a wider data type (for ex. unsigned long long int with max 18 446 744 073 709 551 615). In case of 16 bits per pixel the idea would be the same - use wider data type (for ex. unsigned short int that can hold values up to 65535).
+Currently our data structure can hold values up to 4096 * 4096 * 255 = 4 278 190 080. If buffer dimensions will be > 4096 x 4096 it is necessary to change the data type of our integral image. Current implementation uses `unsigned int`. Therefore, we'd have to use a wider data type (for ex. `unsigned long long int` with max 18 446 744 073 709 551 615). In case of 16 bits per pixel the idea would be the same - use wider data type (for ex. `unsigned short int` that can hold values up to 65535).
 
 **What would change if we needed to find the maximum value inside the search window (instead of the sum or average)?**
 
